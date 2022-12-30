@@ -10,6 +10,8 @@ import * as Router from "../router";
 import { connect } from "react-redux";
 import { usersSelector } from "../store/selector";
 import { addUserAction } from "../store/actions";
+import * as UAnalytics from "../gtm";
+import dayjs from "dayjs";
 
 const UsersContainer = (props) => {
   const navigate = useNavigate();
@@ -22,6 +24,12 @@ const UsersContainer = (props) => {
       <Button
         label="Add new user"
         onClick={() => {
+          UAnalytics.push({
+            category: "Users",
+            action: "Add new user",
+            label: "Enter flow",
+            value: dayjs(),
+          });
           navigate(Router.routes.addNewUser);
         }}
       />

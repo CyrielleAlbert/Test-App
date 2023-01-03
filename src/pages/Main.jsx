@@ -20,6 +20,12 @@ export const Main = () => {
             label: "Navigate",
             value: 0,
           });
+          UAnalytics.push2({
+            category: "Main",
+            action: "See Users",
+            label: "Navigate",
+            value: 0,
+          });
           navigate(Router.routes.users);
         }}
       />
@@ -28,6 +34,12 @@ export const Main = () => {
         label="See Places"
         onClick={() => {
           UAnalytics.push({
+            category: "Main",
+            action: "See Places",
+            label: "Navigate",
+            value: 0,
+          });
+          UAnalytics.push2({
             category: "Main",
             action: "See Places",
             label: "Navigate",

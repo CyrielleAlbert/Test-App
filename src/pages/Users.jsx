@@ -30,6 +30,12 @@ const UsersContainer = (props) => {
             label: "Enter flow",
             value: dayjs(),
           });
+          UAnalytics.push2({
+            category: "Users",
+            action: "Add new user",
+            label: "Enter flow",
+            value: dayjs(),
+          });
           navigate(Router.routes.addNewUser);
         }}
       />

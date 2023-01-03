@@ -14,14 +14,15 @@ export const Global = () => {
 
   useEffect(() => {
     console.log("UA tracking", location.pathname);
-    UAnalytics.trackPage(
-      {
-        path: location.pathname,
-        title: Router.titles[location.pathname],
-      },
-      [location.pathname]
-    );
-  });
+    UAnalytics.trackPage({
+      path: location.pathname,
+      title: Router.titles[location.pathname],
+    });
+    UAnalytics.trackPage2({
+      path: location.pathname,
+      title: Router.titles[location.pathname],
+    });
+  }, [location.pathname]);
   return (
     <Routes>
       <Route path={Router.path.home} element={<Main />} exact />

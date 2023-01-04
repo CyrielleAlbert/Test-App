@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 export const push = (options) => {
   if ("dataLayer" in window) {
     window.dataLayer.push({
@@ -30,6 +32,8 @@ export const push2 = (options) => {
         action: options.action,
         label: options.label ?? "",
         value: options.value ?? "",
+        path: undefined,
+        title: undefined,
       },
     });
   }
@@ -41,6 +45,10 @@ export const trackPage2 = (options) => {
       event_params: {
         path: options.path,
         title: options.title,
+        category: undefined,
+        action: undefined,
+        label: undefined,
+        value: undefined,
       },
     });
   }

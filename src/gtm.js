@@ -45,3 +45,35 @@ export const trackPage2 = (options) => {
     });
   }
 };
+
+export const AnalyticsTimer = () => {
+  const [start, setStart] = useState();
+  const [end, setEnd] = useState();
+  const [duration, setDuration] = useState(0);
+
+  const startTimer = () => {
+    setStart(Date.now());
+  };
+  const stopTimer = () => {
+    setEnd(Date.now());
+    setDuration(end - start);
+  };
+
+  const trackDuration = (options) => {
+    if (duration === 0) {
+      return "ERROR: duration is 0";
+    }
+    push2({
+      category: options.category,
+      action: options.action,
+      label: options.label,
+      value: duration,
+    });
+  };
+
+  return {
+    startTimer,
+    stopTimer,
+    trackDuration,
+  };
+};

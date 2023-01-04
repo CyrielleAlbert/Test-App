@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StepFlow, StepFlowStep } from "@telia/styleguide/business";
 import { RadioButtonGroup, TextField } from "@telia/styleguide";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { usersSelector } from "../store/selector";
 import { addUserAction } from "../store/actions";
+import * as UAnalytics from "../gtm";
+import { Step1 } from "./AddUser/Step1";
+import { Step2 } from "./AddUser/Step2";
+import { Step3 } from "./AddUser/Step3";
+import { Step4 } from "./AddUser/Step4";
 
 const AddNewUserFlowContainer = (props) => {
   const navigate = useNavigate();
@@ -17,6 +22,10 @@ const AddNewUserFlowContainer = (props) => {
     gender: "",
     nationality: "",
   });
+  const { startTimer, stopTimer, trackDuration } = UAnalytics.AnalyticsTimer();
+  useEffect(() => {
+    startTimer();
+  }, []);
 
   return (
     <StepFlow
@@ -31,44 +40,26 @@ const AddNewUserFlowContainer = (props) => {
       }}
       onSubmit={() => {
         addUser(user);
+        stopTimer();
+        trackDuration({
+          category: "Users",
+          action: "Add new user",
+          label: "track_flow_duration",
+        });
         navigate(-1);
       }}
     >
       <StepFlowStep isValid={true} title={"Enter a valid name"}>
-        <TextField
-          value={user.name}
-          label={"Name"}
-          onChange={(e) => setUser({ ...user, name: e.target.value })}
-        />
+        <Step1 user={user} setUser={setUser} />
       </StepFlowStep>
       <StepFlowStep isValid={true} title={"How old are you?"}>
-        <TextField
-          value={user.age}
-          label={"Age"}
-          onChange={(e) => setUser({ ...user, age: e.target.value })}
-        />
+        <Step2 user={user} setUser={setUser} />
       </StepFlowStep>
       <StepFlowStep isValid={true} title={"How do you consider yourself?"}>
-        <RadioButtonGroup
-          list={[
-            { label: "Male", value: "Male" },
-            { label: "Female", value: "Female" },
-            { label: "Other", value: "Other" },
-          ]}
-          type={"horizontal"}
-          name={"Gender"}
-          onChange={(e) => {
-            setUser({ ...user, gender: e.target.value });
-          }}
-          selectedValue={user.gender}
-        />
+        <Step3 user={user} setUser={setUser} />
       </StepFlowStep>
       <StepFlowStep isValid={true} title={"Where are you from?"}>
-        <TextField
-          value={user.nationality}
-          label={"Nationality"}
-          onChange={(e) => setUser({ ...user, nationality: e.target.value })}
-        />
+        <Step4 user={user} setUser={setUser} />
       </StepFlowStep>
     </StepFlow>
   );

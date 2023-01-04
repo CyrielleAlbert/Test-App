@@ -37,7 +37,7 @@ export const push2 = (options) => {
 export const trackPage2 = (options) => {
   if ("dataLayer" in window) {
     window.dataLayer.push({
-      event: "page_view",
+      event: "page_view_GA4",
       event_params: {
         path: options.path,
         title: options.title,

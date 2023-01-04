@@ -64,8 +64,13 @@ export const AnalyticsTimer = () => {
   };
   const stopTimer = () => {
     setEnd(Date.now());
-    setDuration(end - start);
   };
+
+  useEffect(() => {
+    if (start && end) {
+      setDuration(end - start);
+    }
+  }, [end]);
 
   useEffect(() => {
     console.log("start", start);

@@ -40,11 +40,13 @@ const AddNewUserFlowContainer = (props) => {
       }}
       onSubmit={() => {
         addUser(user);
-        stopTimer();
-        trackDuration({
-          category: "Users",
-          action: "Add new user",
-          label: "track_flow_duration",
+        stopTimer().then((duration) => {
+          UAnalytics.push2({
+            category: "Users",
+            action: "Add new user",
+            label: "track_flow_duration",
+            value: duration,
+          });
         });
         navigate(-1);
       }}

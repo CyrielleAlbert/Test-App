@@ -4,7 +4,7 @@ import * as UAnalytics from "../../gtm";
 
 export const Step2 = ({ user, setUser }) => {
   useEffect(() => {
-    UAnalytics.push({
+    UAnalytics.push2({
       category: "Users",
       action: "Add new user",
       label: "step_tracking",

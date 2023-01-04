@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export const push = (options) => {
   if ("dataLayer" in window) {
@@ -66,6 +66,12 @@ export const AnalyticsTimer = () => {
     setEnd(Date.now());
     setDuration(end - start);
   };
+
+  useEffect(() => {
+    console.log("start", start);
+    console.log("end", end);
+    console.log("duration", duration);
+  }, [start, end, duration]);
 
   const trackDuration = (options) => {
     if (duration === 0) {

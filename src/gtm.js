@@ -69,6 +69,7 @@ export const AnalyticsTimer = () => {
 
   const trackDuration = (options) => {
     if (duration === 0) {
+      console.error("duration is 0");
       return "ERROR: duration is 0";
     }
     push2({

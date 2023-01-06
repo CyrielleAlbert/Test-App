@@ -25,6 +25,7 @@ export const trackPage = (options) => {
 
 export const push2 = (options) => {
   if ("dataLayer" in window) {
+    console.log("push2", options);
     window.dataLayer.push({
       event: "custom_event_GA4",
       event_params: {

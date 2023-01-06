@@ -81,16 +81,13 @@ export const AnalyticsTimer = () => {
   }, [start, end, duration]);
 
   const trackDuration = (options) => {
-    if (duration === 0) {
-      console.error("duration is 0");
-      return "ERROR: duration is 0";
-    }
     if ("dataLayer" in window) {
+      console.log("hey");
       window.dataLayer.push({
         event: "time_tracking",
         event_params: {
           flow: options.flow,
-          duration: duration,
+          duration: options.duration,
         },
       });
     }

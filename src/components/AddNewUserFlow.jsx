@@ -41,7 +41,7 @@ const AddNewUserFlowContainer = (props) => {
       onSubmit={() => {
         addUser(user);
         stopTimer().then((duration) => {
-          trackDuration({ flow: "Add_new_user" });
+          trackDuration({ flow: "Add_new_user", duration });
         });
         navigate(-1);
       }}

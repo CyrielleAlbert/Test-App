@@ -88,6 +88,10 @@ export const AnalyticsTimer = () => {
         event_params: {
           flow: options.flow,
           duration: options.duration,
+          category: undefined,
+          action: undefined,
+          label: undefined,
+          value: undefined,
         },
       });
     }

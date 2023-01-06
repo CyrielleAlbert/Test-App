@@ -14,12 +14,12 @@ export const Main = () => {
         size="compact"
         label="See Users"
         onClick={() => {
-          UAnalytics.push({
-            category: "Main",
-            action: "See Users",
-            label: "Navigate",
-            value: 0,
-          });
+          // UAnalytics.push({
+          //   category: "Main",
+          //   action: "See Users",
+          //   label: "Navigate",
+          //   value: 0,
+          // });
           UAnalytics.push2({
             category: "Main",
             action: "See Users",
@@ -33,12 +33,12 @@ export const Main = () => {
         size="compact"
         label="See Places"
         onClick={() => {
-          UAnalytics.push({
-            category: "Main",
-            action: "See Places",
-            label: "Navigate",
-            value: 0,
-          });
+          // UAnalytics.push({
+          //   category: "Main",
+          //   action: "See Places",
+          //   label: "Navigate",
+          //   value: 0,
+          // });
           UAnalytics.push2({
             category: "Main",
             action: "See Places",

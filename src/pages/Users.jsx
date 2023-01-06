@@ -24,12 +24,12 @@ const UsersContainer = (props) => {
       <Button
         label="Add new user"
         onClick={() => {
-          UAnalytics.push({
-            category: "Users",
-            action: "Add new user",
-            label: "Enter flow",
-            value: dayjs(),
-          });
+          // UAnalytics.push({
+          //   category: "Users",
+          //   action: "Add new user",
+          //   label: "Enter flow",
+          //   value: dayjs(),
+          // });
           UAnalytics.push2({
             category: "Users",
             action: "Add new user",

@@ -85,12 +85,21 @@ export const AnalyticsTimer = () => {
       console.error("duration is 0");
       return "ERROR: duration is 0";
     }
-    push2({
-      category: options.category,
-      action: options.action,
-      label: options.label,
-      value: duration,
-    });
+    if ("dataLayer" in window) {
+      window.dataLayer.push({
+        event: "time_tracking",
+        event_params: {
+          flow: options.flow,
+          duration: duration,
+        },
+      });
+    }
+    // push2({
+    //   category: options.category,
+    //   action: options.action,
+    //   label: options.label,
+    //   value: duration,
+    // });
   };
 
   return {

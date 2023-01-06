@@ -41,12 +41,7 @@ const AddNewUserFlowContainer = (props) => {
       onSubmit={() => {
         addUser(user);
         stopTimer().then((duration) => {
-          UAnalytics.push2({
-            category: "Users",
-            action: "Add new user",
-            label: "track_flow_duration",
-            value: duration,
-          });
+          trackDuration({ flow: "Add_new_user" });
         });
         navigate(-1);
       }}
